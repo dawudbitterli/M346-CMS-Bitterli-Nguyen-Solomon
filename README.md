@@ -2,10 +2,10 @@
 ***LBV2: Das CMS Projekt der Gruppe Bitterli-Nguyen-Solomon.***
 
 
-**Autor:** David Bitterli
+**Autor:** *David Bitterli*
 #
-**Datum:** 19.03.2024
+**Datum:** *19.03.2024*
 #
-**Ort:** St. Gallen
+**Ort:** *St. Gallen*
 #
-**Aufgabe:** LBV2 CMS
+**Aufgabe:** *LBV2 CMS*
