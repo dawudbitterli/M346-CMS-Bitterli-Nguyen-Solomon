@@ -126,3 +126,51 @@ require_once ABSPATH . 'wp-settings.php';
 ```
 
 ## *Schritt 6: Endspurt*
+
+Der folgende Code ändert den Besitzer und die Gruppe aller Dateien und Verzeichnisse innerhalb des WordPress-Verzeichnisses in `www-data`.
+
+```
+sudo chown -R www-data:www-data /var/www/html/wordpress
+```
+Nun müssen wir die Berechtigung aller Dateien Verzeichnisse innerhalb des WordPress Verzeichnisses ändern damit sichergestellt ist, das der Webserver auf die Dateien zugreifen kann. Diese Berechtigungen sind wichtig, damit der Besitzer die dateien umschreiben und ausführen kann während andere Benutzer sie nur ausführen können.
+
+```
+sudo chmod -R 755 /var/www/html/wordpress
+```
+Nun müssen wir das Apache-Modul `mod_rewrite` aktivieren, das für das Umschreiben von URLs verwendet wird. Dies ist notwendig, um die Permalinks in WordPress zu aktivieren.
+
+```
+sudo a2enmod rewrite
+```
+
+Nun starten wir den Server neu, um Änderungen anzuwenden und anschliessend das Verzeichnis wechseln.
+```
+sudo systemctl restart apache2
+cd ..
+```
+
+Mit dem folgenden Code löschen wir die Datei `index.html` im aktuellen Verzeichnis, damit gewährleistet ist, das der Webserver auf die `index.php` Datei zugreift. Ebenfalls Löschen wir anschliessend die Datei `latest.tar.gz` Datei, da sie überflüssig ist und durch das Löschen Speicherplatz freigegeben wird
+```
+sudo rm index.html
+sudo rm latest.tar.gz
+```
+
+Nun in das Stammverzeichnis wechseln
+```
+Cd /
+```
+Der folgende Code verschiebt alle Dateien und Verzeichnisse innerhalb des WordPress-Verzeichnisses in das übergeordnete Verzeichnis `/var/www/html`. Dieser Befehl wird verwendet, um sicherzustellen, dass die Dateien und Verzeichnisse direkt im Hauptverzeichnis des Webservers liegen.
+```
+sudo find /var/www/html/wordpress -mindepth 1 -exec mv -t /var/www/html {} +
+```
+
+Nun wechseln wir in unser Kernverzeichnis `/var/www/html`.
+```
+Cd var/www/html
+```
+
+Abschliessend Löschen wir nun das leere wordpress Verzeichnis, da alle Dateien in diesem Verzeichnis schon verschoben wurden und es für uns keinen nutzen mehr hat.
+
+```
+Sudo rmdir wordpress
+```
