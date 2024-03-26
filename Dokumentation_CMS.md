@@ -35,7 +35,7 @@ Speichern Sie nun die Regeln und verwenden Sie die Public IPv4 Adresse der Insta
 
 ## *Schritt 2: ssh-Verbindung*
 
-durch das erstellen einer Instanz mit einem neuen Key-Pair, müsste Ihnen aufgefallen sein, das sich eine Datei heruntergeladen hat, welche den Schlüssel beinhaltet.  
+Durch das erstellen einer Instanz mit einem neuen Key-Pair, müsste Ihnen aufgefallen sein, das sich eine Datei heruntergeladen hat, welche den Schlüssel beinhaltet.  
 
 Bewegen Sie wenn nötig den Schlüssel in den .ssh Ordner und prüfen Sie die ssh-Verbindung:
 ```
