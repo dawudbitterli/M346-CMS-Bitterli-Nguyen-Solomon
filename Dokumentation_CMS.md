@@ -15,4 +15,7 @@ Als ersten Schritt zur Funktionierenden CMS Anwendung, muss eine **EC2** Instanz
 
 Nach dem Sie die Instanz konfiguriert haben, *launchen* Sie diese.
 
-Nun sehen Sie die erstellte Instanz wenn sie auf *Instances* drücken. Wenn man nun auf die erstellte Instanz drückt, öffnet sich ein feinster, in welchem man sich Wichtige Informationen entnehmen kann wie z.B. die **Public IPv4** Adresse.
+Nun sehen Sie die erstellte Instanz wenn sie auf *Instances* drücken. Wenn man nun auf die erstellte Instanz drückt, öffnet sich ein feinster, in welchem man sich Wichtige Informationen entnehmen kann wie z.B. die **Public IPv4** Adresse.  
+
+---
+## *Schritt 2: ssh-Verbindung*
