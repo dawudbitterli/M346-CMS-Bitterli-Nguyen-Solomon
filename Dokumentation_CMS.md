@@ -18,3 +18,10 @@ Nach dem Sie die Instanz konfiguriert haben, *launchen* Sie diese.
 Nun sehen Sie die erstellte Instanz wenn sie auf *Instances* drücken. Wenn man nun auf die erstellte Instanz drückt, öffnet sich ein feinster, in welchem man sich Wichtige Informationen entnehmen kann wie z.B. die **Public IPv4** Adresse.  
 ---
 ## *Schritt 2: ssh-Verbindung*
+
+durch das erstellen einer Instanz mit einem neuen Key-Pair, müsste Ihnen aufgefallen sein, das sich eine Datei heruntergeladen hat, welche den Schlüssel beinhaltet.  
+
+Bewegen Sie wenn nötig den Schlüssel in den .ssh Ordner und prüfen Sie die ssh-Verbindung
+```
+ssh -i c:\users\<Benutzer>\.ssh\<Key-Pair Dateiname.pem> ubuntu@<Public IPv4>
+```
