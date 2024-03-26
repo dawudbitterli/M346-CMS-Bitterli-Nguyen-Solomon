@@ -17,21 +17,6 @@ Nach dem Sie die Instanz konfiguriert haben, *launchen* Sie diese.
 
 Nun sehen Sie die erstellte Instanz wenn sie auf *Instances* drücken. Wenn man nun auf die erstellte Instanz drückt, öffnet sich ein feinster, in welchem man sich Wichtige Informationen entnehmen kann wie z.B. die **Public IPv4** Adresse.  
 
----
-## *Schritt 2: ssh-Verbindung*
-
-durch das erstellen einer Instanz mit einem neuen Key-Pair, müsste Ihnen aufgefallen sein, das sich eine Datei heruntergeladen hat, welche den Schlüssel beinhaltet.  
-
-Bewegen Sie wenn nötig den Schlüssel in den .ssh Ordner und prüfen Sie die ssh-Verbindung:
-```
-ssh -i c:\users\<Benutzer>\.ssh\<Key_Pair_Dateiname.pem> ubuntu@<Public IPv4>
-```
-Wenn die Verbindung durch ssh erfolgreich war, führen sie über die ssh-Verbindung folgende Befehle aus:
-```
-sudo apt update
-sudo apt install apache2
-sudo chmod 777 /var/www/html/<Anzuzeigende_Datei.html>
-```
 
 Damit Ihnen die Firewall keine Probleme macht, müssen Sie kleine Veränderungen an der Firewall der erstellten Instanz vornehmen. Folgen Sie hierfür dem folgenden Pfad:
   * Instances
@@ -47,3 +32,29 @@ CIDR blocks: **0.0.0.0/0**
 Speichern Sie nun die Regeln und verwenden Sie die Public IPv4 Adresse der Instanz in einem Browser mit dem Port 80 am Ende:
 
 `0.0.0.0/:80`
+
+---
+## *Schritt 2: ssh-Verbindung*
+
+durch das erstellen einer Instanz mit einem neuen Key-Pair, müsste Ihnen aufgefallen sein, das sich eine Datei heruntergeladen hat, welche den Schlüssel beinhaltet.  
+
+Bewegen Sie wenn nötig den Schlüssel in den .ssh Ordner und prüfen Sie die ssh-Verbindung:
+```
+ssh -i c:\users\<Benutzer>\.ssh\<Key_Pair_Dateiname.pem> ubuntu@<Public IPv4>
+```
+Wenn die Verbindung durch ssh erfolgreich war, führen sie über die ssh-Verbindung folgende installationen aus:
+```
+sudo apt update
+sudo apt install apache2 mysql-server php libapache2-mod-php php-mysql
+```
+Nunn legen wir einen Datenbank für unsere Wordpress zu
+```
+sudo mysql
+```
+```
+CREATE DATABASE wordpress;
+CREATE USER 'wordpressuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpressuser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+```
