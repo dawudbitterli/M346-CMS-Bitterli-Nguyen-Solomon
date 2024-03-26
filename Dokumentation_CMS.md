@@ -23,13 +23,26 @@ durch das erstellen einer Instanz mit einem neuen Key-Pair, müsste Ihnen aufgef
 
 Bewegen Sie wenn nötig den Schlüssel in den .ssh Ordner und prüfen Sie die ssh-Verbindung:
 ```
-ssh -i c:\users\<Benutzer>\.ssh\<Key-Pair Dateiname.pem> ubuntu@<Public IPv4>
+ssh -i c:\users\<Benutzer>\.ssh\<Key_Pair_Dateiname.pem> ubuntu@<Public IPv4>
 ```
 Wenn die Verbindung durch ssh erfolgreich war, führen sie über die ssh-Verbindung folgende Befehle aus:
 ```
 sudo apt update
 sudo apt install apache2
-sudo chmod 777 /var/www/html/
+sudo chmod 777 /var/www/html/<Anzuzeigende_Datei.html>
 ```
 
-Damit Ihnen die Firewall keine Probleme macht, müssen Sie kleine Veränderungen an der Firewall der erstellten INstanz vornehmen
+Damit Ihnen die Firewall keine Probleme macht, müssen Sie kleine Veränderungen an der Firewall der erstellten Instanz vornehmen. Folgen Sie hierfür dem folgenden Pfad:
+  * Instances
+  * Security
+  * Security groups
+  * Edit inbound rules
+  * Add rule
+
+Nun wählen sie als Typ: **HTTP**  
+Port range: **80**  
+CIDR blocks: **0.0.0.0/0**  
+
+Speichern Sie nun die Regeln und verwenden Sie die Public IPv4 Adresse der Instanz in einem Browser mit dem Port 80 am Ende:
+
+`0.0.0.0/:80`
