@@ -33,7 +33,6 @@ Speichern Sie nun die Regeln und verwenden Sie die Public IPv4 Adresse der Insta
 
 `0.0.0.0/:80`
 
----
 ## *Schritt 2: ssh-Verbindung*
 
 durch das erstellen einer Instanz mit einem neuen Key-Pair, müsste Ihnen aufgefallen sein, das sich eine Datei heruntergeladen hat, welche den Schlüssel beinhaltet.  
