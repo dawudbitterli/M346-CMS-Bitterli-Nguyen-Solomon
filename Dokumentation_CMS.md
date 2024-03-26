@@ -42,15 +42,19 @@ Bewegen Sie wenn nötig den Schlüssel in den .ssh Ordner und prüfen Sie die ss
 ```
 ssh -i c:\users\<Benutzer>\.ssh\<Key_Pair_Dateiname.pem> ubuntu@<Public IPv4>
 ```
-Wenn die Verbindung durch ssh erfolgreich war, führen sie über die ssh-Verbindung folgende installationen aus:
+Wenn die Verbindung durch ssh erfolgreich war, führen Sie über die ssh-Verbindung folgende installationen aus:
 ```
 sudo apt update
 sudo apt install apache2 mysql-server php libapache2-mod-php php-mysql
 ```
-Nunn legen wir einen Datenbank für unsere Wordpress zu
+
+## *Schritt 3: MySql Datenbank*
+
+Nun muss eine Datenbank für unsere Wordpressdatei angelegt werden.
 ```
 sudo mysql
 ```
+
 ```
 CREATE DATABASE wordpress;
 CREATE USER 'wordpressuser'@'localhost' IDENTIFIED BY 'password';
@@ -58,3 +62,67 @@ GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpressuser'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
 ```
+
+## *Schritt 4: Wordpress*
+
+Wechseln sie durch den befehl in das Arbeitsverzeichnis
+```
+cd /var/www/html
+```
+
+Durch den folgenden Befehl weird die neueste Version von WordPress heruntergeladen:
+```
+sudo wget https://wordpress.org/latest.tar.gz
+```
+
+Nun wurde die neueste Version von WordPress als .zip Datei heruntergeladen. Diese Datei muss nun noch extrahiert werden. Verwenden sie den folgenden Befehl um die Datei in Ihr jetziges Verzeichnis zu extrahieren:
+
+```
+sudo tar -xzvf latest.tar.gz
+```
+
+Nach dem WordPress extrahiert wurde, können sie in das WordPress verzeichnis wechseln:
+```
+cd wordpress
+```
+
+```
+sudo cp wp-config-sample.php wp-config.php
+```
+Dieser Befehl kopiert die Beispieldatei `wp-config-sample.php` und erstellt eine neue Konfigurationsdatei namens `wp-config.php`. Diese Datei wird später bearbeitet, um die Verbindung zur Datenbank und herzustellen und andere Einstellungen für WordPress festzulegen.
+
+Öffnen Sie nun den Texteditor im Terminal um die `wp-config.php` Datei zu bearbeiten. In ihr werden nun wichtige Konfigurationseinstellungen vorgenommen.
+
+```
+sudo nano wp-config.php
+```
+
+## *Schritt 5: wp-config.php*
+
+Folgend zeigen wir den Code den wir in der `wp-config.php` verwendet haben, um die Datei nach unseren Anforderungen zu Konfigurieren:
+
+```
+<?php
+define( 'DB_NAME', 'wordpress' );
+define( 'DB_USER', 'wordpressuser' );
+define( 'DB_PASSWORD', 'password' );
+define(‘DB_HOST’, ‘localhost);
+define(‘DB_CHARSET’, ‘utf8’);
+define(‘DB_COLLATE’, ‘’);
+define( 'AUTH_KEY',         'put your unique phrase here' );
+define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
+define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
+define( 'NONCE_KEY',        'put your unique phrase here' );
+define( 'AUTH_SALT',        'put your unique phrase here' );
+define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
+define( 'NONCE_SALT',       'put your unique phrase here' );
+$table_prefix = 'wp_';
+define( 'WP_DEBUG', false );
+if ( ! defined( 'ABSPATH' ) ) {
+        define( 'ABSPATH', __DIR__ . '/' );
+}
+require_once ABSPATH . 'wp-settings.php';
+```
+
+## *Schritt 6: Endspurt*
