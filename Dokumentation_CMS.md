@@ -21,7 +21,15 @@ Nun sehen Sie die erstellte Instanz wenn sie auf *Instances* drücken. Wenn man 
 
 durch das erstellen einer Instanz mit einem neuen Key-Pair, müsste Ihnen aufgefallen sein, das sich eine Datei heruntergeladen hat, welche den Schlüssel beinhaltet.  
 
-Bewegen Sie wenn nötig den Schlüssel in den .ssh Ordner und prüfen Sie die ssh-Verbindung
+Bewegen Sie wenn nötig den Schlüssel in den .ssh Ordner und prüfen Sie die ssh-Verbindung:
 ```
 ssh -i c:\users\<Benutzer>\.ssh\<Key-Pair Dateiname.pem> ubuntu@<Public IPv4>
 ```
+Wenn die Verbindung durch ssh erfolgreich war, führen sie über die ssh-Verbindung folgende Befehle aus:
+```
+sudo apt update
+sudo apt install apache2
+sudo chmod 777 /var/www/html/
+```
+
+Damit Ihnen die Firewall keine Probleme macht, müssen Sie kleine Veränderungen an der Firewall der erstellten INstanz vornehmen
