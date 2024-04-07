@@ -2,7 +2,6 @@
 
 **Dokumentation des CMS Projektes der Gruppe Bitterli-Nguyen-Solomon.**  
 
-
 **Autor:** *David Bitterli, Quoc Hung, Abel Solomon*  
 **Datum:** *26.03.2024*  
 
@@ -216,4 +215,10 @@ Abschliessend Löschen wir nun das leere wordpress Verzeichnis, da alle Dateien 
 Sudo rmdir wordpress
 ```
 
-> > > > > > > 
+## *Schritt 7: Automatisierung-Skript*
+
+Dieses Skript automatisiert die Installation von WordPress auf einem Server.
+
+```bash
+
+```
