@@ -60,7 +60,6 @@ echo "Die Instanz mit der ID $instance_id wurde erstellt."
 echo "Die öffentliche IPv4-Adresse der Instanz lautet: $public_ip"
 echo "Die Security Group ID der Instanz lautet: $security_group_id"
 echo "Die Subnet ID der Instanz lautet: $subnet_id"
-
 ```
 
 # Alles in einem:
@@ -109,10 +108,4 @@ echo "Die Instanz mit der ID $instance_id wurde erstellt."
 echo "Die öffentliche IPv4-Adresse der Instanz lautet: $public_ip"
 echo "Die Security Group ID der Instanz lautet: $security_group_id"
 echo "Die Subnet ID der Instanz lautet: $subnet_id"
-
- 
 ```
-
-
-
-

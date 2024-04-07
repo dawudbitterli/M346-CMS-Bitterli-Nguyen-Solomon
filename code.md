@@ -1,10 +1,13 @@
 ## Benötigte Codes um ein Wordpress CMS zu installieren
+
 ### Muss noch in Bash script umgewandelt werden
+
 ```
 sudo apt update
 sudo apt install apache2 mysql-server php libapache2-mod-php php-mysql
 sudo mysql
 ```
+
 ```
 CREATE DATABASE wordpress;
 CREATE USER 'wordpressuser'@'localhost' IDENTIFIED BY 'password';
@@ -12,14 +15,16 @@ GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpressuser'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
 ```
+
 ```
 cd /var/www/html
 sudo wget https://wordpress.org/latest.tar.gz
 sudo tar -xzvf latest.tar.gz
 cd wordpress
-sudo cp wp-config-sample.php wp-config.php
+sudo rm wp-config.php
 sudo nano wp-config.php
 ```
+
 ```
 <?php
 define( 'DB_NAME', 'wordpress' );
@@ -43,6 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 require_once ABSPATH . 'wp-settings.php';
 ```
+
 ```
 sudo chown -R www-data:www-data /var/www/html/wordpres´
 sudo chmod -R 755 /var/www/html/wordpress
